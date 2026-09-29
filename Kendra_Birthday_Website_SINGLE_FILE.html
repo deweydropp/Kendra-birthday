@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>For Kendra ♡</title>
+<style>
+*{box-sizing:border-box}
+:root{--pink:#f5a7c2;--deep:#9f3e67;--pale:#fff5f8;--ink:#4d3040;--white:#fff}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(145deg,#fff8fa,#fdebf2);color:var(--ink);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+button,a{font:inherit}
+.hidden{display:none}
+.screen{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 20px;position:relative;z-index:2}
+.opening{transition:opacity .7s,transform .9s}
+.opening.opened{opacity:0;transform:scale(1.04)}
+.tiny,.eyebrow{letter-spacing:.18em;text-transform:uppercase;font:600 10px/1.5 Arial,sans-serif;color:#a65a77}
+.envelope-wrap{width:290px;height:210px;margin:30px auto 22px;cursor:pointer;perspective:900px}
+.envelope{position:relative;width:100%;height:100%;background:#f7c0d3;border-radius:8px;box-shadow:0 22px 55px #b86c8730;overflow:visible}
+.envelope:before,.envelope:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid;z-index:2}
+.envelope:before{left:0;border-width:105px 145px 0 0;border-color:#f1adc5 transparent transparent transparent}
+.envelope:after{right:0;border-width:105px 0 0 145px;border-color:#e99bb8 transparent transparent transparent}
+.flap{position:absolute;top:0;left:0;width:0;height:0;border-style:solid;border-width:108px 145px 0;border-color:#f9cadb transparent transparent;z-index:4;transform-origin:top;transition:transform .9s}
+.paper{position:absolute;left:28px;right:28px;bottom:18px;height:135px;background:#fffdfd;border-radius:5px;z-index:1;display:flex;align-items:flex-start;justify-content:center;padding-top:30px;box-shadow:0 5px 15px #7d375220}
+.paper span{font-size:20px;color:#a64970}
+.heart-seal{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:5;background:#d95b88;color:white;width:55px;height:55px;border-radius:50%;display:grid;place-items:center;font-size:28px;box-shadow:0 5px 15px #9b3b6135;transition:transform .3s}
+.envelope-wrap:hover .heart-seal{transform:translate(-50%,-50%) scale(1.08)}
+.opening.opened .flap{transform:rotateX(170deg)}
+.opening h1{font-size:31px;margin:8px 0;color:#73324f}
+.hint{font:13px Arial,sans-serif;color:#9a6b7e}
+
+#content{animation:fadeIn .9s ease}
+.hero{text-align:center;padding:80px 22px 45px}
+.hero h1{font-size:42px;line-height:1.05;color:#73324f;margin:12px auto 24px;max-width:650px}
+.music-btn,.playlist-button{display:inline-block;border:0;background:#b94e78;color:#fff;text-decoration:none;padding:13px 20px;border-radius:999px;box-shadow:0 9px 22px #a03f6626;cursor:pointer;transition:.25s}
+.music-btn:hover,.playlist-button:hover{transform:translateY(-2px);background:#a33e68}
+.music-note{font:12px Arial,sans-serif;color:#a66a80;margin-top:10px}
+.section{max-width:930px;margin:0 auto;padding:75px 22px}
+.section-title{display:flex;align-items:center;gap:14px;margin-bottom:25px}
+.section-title span{font:700 11px Arial,sans-serif;letter-spacing:.15em;color:#c46b8d}
+.section-title h2{font-size:31px;margin:0;color:#73324f}
+.section-intro{font-size:17px;color:#815467;margin-top:-10px;margin-bottom:30px}
+.letter{background:#fffdfd;border:1px solid #f2d9e2;border-radius:18px;padding:34px 28px;box-shadow:0 20px 60px #a64d6c12;line-height:1.78;font-size:16px}
+.letter p{margin:0 0 19px}
+.memory-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.memory-card{background:#fff;border-radius:16px;padding:12px;box-shadow:0 12px 35px #9d486014;transform:rotate(var(--r,0deg))}
+.memory-card:nth-child(odd){--r:-.7deg}.memory-card:nth-child(even){--r:.7deg}
+.photo-placeholder{aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff3f7,#f8dce7);border-radius:11px;color:#c46b8d}
+.photo-placeholder span{font-size:38px}.photo-placeholder small{font:700 9px Arial,sans-serif;letter-spacing:.15em;margin-top:8px}
+.memory-card h3{font-size:17px;margin:14px 5px 5px;color:#73324f}
+.memory-card p{font:12px/1.5 Arial,sans-serif;color:#967180;margin:0 5px 8px}
+.photo-help{margin-top:25px;background:#fff6f9;border:1px dashed #e2a9bd;border-radius:12px;padding:14px 16px;font:12px/1.6 Arial,sans-serif;color:#82586b}
+.playlist-section{padding-bottom:90px}
+.playlist-button{margin-bottom:35px}
+.songs{display:flex;flex-direction:column;gap:12px}
+.song-card{display:grid;grid-template-columns:42px 1fr;gap:14px;background:#fff;border:1px solid #f2dce4;border-radius:14px;padding:17px 16px;box-shadow:0 7px 25px #a64d6c0d}
+.song-num{width:36px;height:36px;border-radius:50%;background:#fde4ed;color:#a44b70;display:grid;place-items:center;font:700 10px Arial,sans-serif}
+.song-card h3{font-size:17px;margin:0 0 7px;color:#73324f}
+.song-card p{font:13px/1.6 Arial,sans-serif;color:#6f5662;margin:0}
+.divider-heart{text-align:center;padding:30px 0;font-size:28px}
+footer{text-align:center;padding:75px 20px 95px;background:#fff3f7}
+.footer-heart{font-size:35px;color:#c54f7e}
+footer h2{font-size:30px;color:#73324f;margin:12px 0}
+footer p{font-size:16px;color:#966377}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.floating-heart{position:absolute;bottom:-30px;color:#e6a4b9;opacity:.35;font-size:18px;animation:float linear infinite}
+@keyframes float{from{transform:translateY(0) rotate(0deg);opacity:0}15%{opacity:.35}85%{opacity:.2}to{transform:translateY(-110vh) rotate(120deg);opacity:0}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(min-width:700px){.memory-grid{grid-template-columns:repeat(4,1fr)}.letter{padding:48px 55px}.section{padding-left:30px;padding-right:30px}}
+@media(max-width:390px){.envelope-wrap{width:260px;height:188px}.envelope:before{border-width:94px 130px 0 0}.envelope:after{border-width:94px 0 0 130px}.flap{border-width:97px 130px 0}.hero h1{font-size:35px}.letter{padding:25px 20px;font-size:15px}}
+
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+
+<main>
+<section id="opening" class="screen opening">
+  <div class="tiny">A little birthday surprise...</div>
+  <div class="envelope-wrap" id="openEnvelope" role="button" tabindex="0" aria-label="Open birthday letter">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="paper"><span>For Kendra ♡</span></div>
+      <div class="heart-seal">♥</div>
+    </div>
+  </div>
+  <h1>For my sweet angel</h1>
+  <p class="hint">Tap the heart to open ♡</p>
+</section>
+
+<section id="content" class="hidden">
+  <header class="hero">
+    <p class="eyebrow">HAPPY BIRTHDAY, KENDRA</p>
+    <h1>For my favourite person ♡</h1>
+    <button class="music-btn" id="musicBtn">♫ Open the song on Spotify</button>
+    <p class="music-note">Good Looking ♡</p>
+  </header>
+
+  <section class="section letter-section reveal">
+    <div class="section-title"><span>01</span><h2>A letter for you</h2></div>
+    <div class="letter">
+      <p>Happy birthday my sweet angel!!
+You’re 17 now omg you little grandma..
+
+Anyway, there isn’t much I haven’t already told you, but I really do wanna remind you how much you mean to me, and how much i care about you.
+
+I’m seriously so lucky to have you Kendra you have no idea. You’re my best friend, my girlfriend, and my favourite person all in one. I’m always either talking to you, talking about you to my friends, or waiting for you to come back so i can talk to you. You’re my whole routine and I wouldn’t wanna have it any other way. The past 7 months with you have been some of the best of my life, and I genuinely don’t know where I’d be without you right now. I can’t imagine not being able to call you every day, hearing that sweet voice, your little giggles I always tell you I love, or talking you to sleep every night I can and hearing you slowly stop humming back to everything I say. Everything we do has slowly become something we do together, and I love it so much. I’ve always found myself getting sick of people after a while, hating staying on call, hating texting, but with you i’ve genuinely never loved it more, and im so thankful for all the memories we’ve shared together doing this.
+
+I tell you all the time about every single thing I love about you, but I genuinely cannot stop talking about it because you’re so so perfect Kendra. I love how hilarious you are, I love how you always manage to make me feel better after a rough day, I love how caring you are towards me and how much love you show me on the daily. I love how after every issue we’ve had you’ve tried to communicate with me and resolve it, even though its hard for the both of us. I love not only how much you’ve grown over the course of us knowing each other, but how much you’ve helped me grow. I swear we’re like slowly becoming one person.
+
+When i think about us, one of my favourite memories to look back on is from back when we were friends. I’ve told you this many times before, but I still think about this a lot. I remember secretly staying up reallyy late, and i couldn’t sleep. We just kept sending tiktoks back and forth to each other, and i swear on my life those were the funniest videos ever. I don’t know what it was, maybe it was how late it was getting, but i just keptt laughing, to the point where i started crying. I remember we both said that we were going to sleep several times, but we both couldn’t, and we just kept going back to each other. I distinctly remember thinking about how funny you were, like you were genuinely making me cryyy laughing dude. I think about that sometimes, and compare it to how we are now. We have nights like that all the time. And not just that, but more. We laugh together like that, we cry together, we talk about memories just like this, we talk about how much we love each other, we can be intimate together, and so so much more. It was so special to me that we were just laughing that hard with each other, and its so special to me now that this is such a normal thing.
+
+Anyway, I’m gonna cut this short because I do have a word limit, but i really hope this year brings you so much happiness, success, and everything you’ve been hoping for.
+
+Happy birthday again pretty girl, you’re genuinely my whole world and I never want you to forget that. You’re perfect, and i wouldn’t change a thing about you or our relationship. I want to love you like this forever, and I hope that when your next birthday rolls around, I can give you another letter just like this one. I love you sosoooo much and i can’t wait to see what this year brings you!!</p>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-title"><span>02</span><h2>Our memories</h2></div>
+    <p class="section-intro">A few little moments that I never want to forget ♡</p>
+    <div class="memory-grid"><article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 1</small></div><h3>Memory 1</h3><p>Add a little caption here whenever you're ready.</p></article>
+<article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 2</small></div><h3>Memory 2</h3><p>Add a little caption here whenever you're ready.</p></article>
+<article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 3</small></div><h3>Memory 3</h3><p>Add a little caption here whenever you're ready.</p></article>
+<article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 4</small></div><h3>Memory 4</h3><p>Add a little caption here whenever you're ready.</p></article>
+<article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 5</small></div><h3>Memory 5</h3><p>Add a little caption here whenever you're ready.</p></article>
+<article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 6</small></div><h3>Memory 6</h3><p>Add a little caption here whenever you're ready.</p></article>
+<article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 7</small></div><h3>Memory 7</h3><p>Add a little caption here whenever you're ready.</p></article>
+<article class="memory-card"><div class="photo-placeholder"><span>♡</span><small>ADD PHOTO 8</small></div><h3>Memory 8</h3><p>Add a little caption here whenever you're ready.</p></article></div>
+    <div class="photo-help">To add your photos later, replace the files named <b>memory1.jpg</b> through <b>memory8.jpg</b> in the <b>photos</b> folder. The placeholders are ready for them.</div>
+  </section>
+
+  <section class="section reveal playlist-section">
+    <div class="section-title"><span>03</span><h2>A playlist for you</h2></div>
+    <p class="section-intro">53 songs, because apparently I had a LOT to say ♡</p>
+    <a class="playlist-button" href="https://open.spotify.com/playlist/55VFd6hPsAkx3uGmvpDLuY" target="_blank" rel="noopener">♫ Open our playlist on Spotify</a>
+    <div class="songs"><article class="song-card"><div class="song-num">01</div><div><h3>High Like Me</h3><p>I know you like this song and obviously you love fakemink ☺️</p></div></article>
+<article class="song-card"><div class="song-num">02</div><div><h3>All i want for christmas is you</h3><p>I remember when you were playing Osu and i was watching you, and you told me about how there was one night where you listened to this on repeat. Now whenever i hear the song i think of you.</p></div></article>
+<article class="song-card"><div class="song-num">03</div><div><h3>Party At My Place</h3><p>I know you love xaviersobased (especially since i thought he wass you when i first met you) and this is the first song i ever heard by him.</p></div></article>
+<article class="song-card"><div class="song-num">04</div><div><h3>Pretty Girl</h3><p>Its a cute song and i love clairo, and anytime i hear it i cant help but think of my own pretty girl 🥰</p></div></article>
+<article class="song-card"><div class="song-num">05</div><div><h3>You’re always on my mind</h3><p>I love love lovee SWV and ive said time and time again how youre always on my mind, so i thought this would be a good fit</p></div></article>
+<article class="song-card"><div class="song-num">06</div><div><h3>Bed of Thorns</h3><p>I know you love TXT and you’ve spent time getting yourself familiar to them, and i remember when you told me all about this album and this song specifically.</p></div></article>
+<article class="song-card"><div class="song-num">07</div><div><h3>I (Heart) You</h3><p>You told me about how you liked KMFDM and i decided to listen to this song a while back to get myself familiar with them.</p></div></article>
+<article class="song-card"><div class="song-num">08</div><div><h3>red snapper</h3><p>Again, another xaviersobased song. I listened to it and i liked it, and of course its from an artist you love.</p></div></article>
+<article class="song-card"><div class="song-num">09</div><div><h3>Twizzler</h3><p>You love this song and its on your playlist!!!</p></div></article>
+<article class="song-card"><div class="song-num">10</div><div><h3>Heart Attack</h3><p>I remember you playing this song a lot on Osu, especially that one game mode that look a bit for you to learn</p></div></article>
+<article class="song-card"><div class="song-num">11</div><div><h3>Double Whammy</h3><p>This song is also on your playlist!!!</p></div></article>
+<article class="song-card"><div class="song-num">12</div><div><h3>Apple Cider</h3><p>I love this song, and it was my favourite beabadoobee song for a while. It makes me think of you, especially when it talks about calling at midnight, which we always do.</p></div></article>
+<article class="song-card"><div class="song-num">13</div><div><h3>You Dont Even Know</h3><p>I love this song and the internet sosoo much, and every beautiful song they have like this makes me think of you. Especially some of the specific lyrics in there.</p></div></article>
+<article class="song-card"><div class="song-num">14</div><div><h3>King for a day</h3><p>I remember when you were playing Osu and one of their songs came up, and I said how I didn’t like them that much. You got mad at me for that, and every time I hear this song or their music i think of you and I kind of regret saying that because it’s really not that bad at all.</p></div></article>
+<article class="song-card"><div class="song-num">15</div><div><h3>Everything I want</h3><p>This song alwaysss makes me think of you. I said earlier how I really like beabadoobee but I remember I reposted something about ‘if you make an insta note about me make it pink’ and I checked Instagram like a couple hours later and you made a note that was pink with this song and I still think about that every time I listen to it.</p></div></article>
+<article class="song-card"><div class="song-num">16</div><div><h3>Never Let Go</h3><p>I remember when you were showing me lngshot for the first time and you said that you liked this song. You were so happy and excited to show me and it was so cute.</p></div></article>
+<article class="song-card"><div class="song-num">17</div><div><h3>D>E>A>T>H>M>E>T>A>L</h3><p>I remember you sent me a video about this song and you added a message saying ‘you like Panchiko right’ and I don’t know why I just remember that made me really happy and now when I listen to it, I think of you.</p></div></article>
+<article class="song-card"><div class="song-num">18</div><div><h3>Roller coaster</h3><p>I know you love TXT, and i gave this song a listen and i liked it!!</p></div></article>
+<article class="song-card"><div class="song-num">19</div><div><h3>Amoeba</h3><p>Again, I love Clairo, and i dont know why but a lot of like peaceful but happy music just makes me think of you.</p></div></article>
+<article class="song-card"><div class="song-num">20</div><div><h3>Mice on Venus</h3><p>You always talked about how much you love Minecraft music and I remember you telling me that this was your favourite song. I remember after you said that I immediately listened to it and I loved it so much because it reminded me of when I was a kid playing Minecraft on the PS3 and I would just listen to that song over and over again. Whenever the song used to play, I used to think of that. But now I just think of you.</p></div></article>
+<article class="song-card"><div class="song-num">21</div><div><h3>Any time, Any place</h3><p>😳😳😳😳😳😳 The song the title the lyrics 😳😳😳😳😳</p></div></article>
+<article class="song-card"><div class="song-num">22</div><div><h3>Roomates</h3><p>I know you used to love Malcolm Todd, and i thought that this would be a good fit for the playlist</p></div></article>
+<article class="song-card"><div class="song-num">23</div><div><h3>Its me, Its verity</h3><p>VERITYVERITYVERITYVERITY</p></div></article>
+<article class="song-card"><div class="song-num">24</div><div><h3>Everybody here wants you</h3><p>I want you and this song is sexy and you are sexy</p></div></article>
+<article class="song-card"><div class="song-num">25</div><div><h3>Walk to Class</h3><p>I remember you telling me this was your favourite Malcolm Todd song</p></div></article>
+<article class="song-card"><div class="song-num">26</div><div><h3>I Know You</h3><p>I love Faye Webster and I love you and I dooo know you and I think this song is really cute and it just reminds me of you sometimes</p></div></article>
+<article class="song-card"><div class="song-num">27</div><div><h3>Lovin’ You</h3><p>This song alwayss reminds me of you omg
+I lovee Minnie Riperton and this song, and the lyrics make me think of you.</p></div></article>
+<article class="song-card"><div class="song-num">28</div><div><h3>Struggle Gang</h3><p>I remember you reposted a xaviersobased video with this song in it</p></div></article>
+<article class="song-card"><div class="song-num">29</div><div><h3>Opening Sequence</h3><p>I remember you played this song a lot on Osu!!!!</p></div></article>
+<article class="song-card"><div class="song-num">30</div><div><h3>Nothing like loving you</h3><p>I love this song and it reminds me of you a lot because there truly isnt anything like loving you. I love loving you more than i love anything else.</p></div></article>
+<div class="divider-heart">❤️</div>
+<article class="song-card"><div class="song-num">32</div><div><h3>Cowboys and Angels</h3><p>This song is very beautiful and obviously I really love it and it reminds me of you specially where there’s a lyric where it says ‘That scar on your face, that beautiful face of yours.’ And you have a little scar on yourr beautiful face 😳</p></div></article>
+<article class="song-card"><div class="song-num">33</div><div><h3>Good looking</h3><p>This song is playing throughout this whole website, and I’ve told you why it reminds me of you but I’m gonna say it again. I remember seeing this TikTok video that had this song in the background. It was really cute, sweet, romantic. I just remember thinking about you for a while and sitting there on that video for like literally five minutes and I just started crying. I don’t even know why. Then I was playing guitar later, and I decided to learn the song, and then I started crying while playing it. Now every time I hear it you’re all I can think about.</p></div></article>
+<article class="song-card"><div class="song-num">34</div><div><h3>Jungle</h3><p>This song was on one of the first coupley cute TikTok’s I ever sent you and that I reposted, and now when I hear it I think of that.</p></div></article>
+<article class="song-card"><div class="song-num">35</div><div><h3>Bad Piggies Theme</h3><p>I remember you were obsessed with this song for a bit after playing it on Osu and you really liked that beginning bit. You would just repeat it over and over again. I thought it was adorable how happy it made you.</p></div></article>
+<article class="song-card"><div class="song-num">36</div><div><h3>Baby Shark</h3><p>I remember you telling me how you like this song and I thought that was so cute</p></div></article>
+<article class="song-card"><div class="song-num">37</div><div><h3>The Eyes of Ibad</h3><p>It say blue in blue eyes you have beautiful blue eyes and i love panchiko and you 😳😳</p></div></article>
+<article class="song-card"><div class="song-num">38</div><div><h3>Gnaw</h3><p>I remember reposting the riff on the guitar because I had learned it and I remember you reposted it after. It reminded me of the fact that you liked Alex G, and I remember playing it for you one time and you recognized the song.</p></div></article>
+<article class="song-card"><div class="song-num">39</div><div><h3>Sofia</h3><p>This song reminds me of you because I really like Clairo and this song is cute and gay and I remember one of the first TikToks you ever reposted about me was to this song and it made me so happy</p></div></article>
+<article class="song-card"><div class="song-num">40</div><div><h3>My Kind of Woman</h3><p>You really are my exact kind of woman you are perfect🥰🥰</p></div></article>
+<article class="song-card"><div class="song-num">41</div><div><h3>Heaven</h3><p>This song is adorable and I think it’s my favourite Clairo song. It reminds me of you because there is a lyric where it says ‘And you’re hard on yourself and your laugh it just melts in my hands’ it reminds me of you because even though you’re perfect, sometimes you can be hard on yourself and that makes me mad because you don’t realize how perfect you are. Also, you have the most adorable laugh ever but everybody knows this already. 🙄</p></div></article>
+<article class="song-card"><div class="song-num">42</div><div><h3>He Loves Me Yeah!</h3><p>Because wow my baby loves me that what it say and it’s true☺️☺️</p></div></article>
+<article class="song-card"><div class="song-num">43</div><div><h3>All i need</h3><p>I love wisp, and this song is really cute to me and you truly are all I need.</p></div></article>
+<article class="song-card"><div class="song-num">44</div><div><h3>Kinky Love</h3><p>I remember making a couple Instagram notes a while back with this song and they were about you. Also, every time I play it on the guitar, it makes me think of you.</p></div></article>
+<article class="song-card"><div class="song-num">45</div><div><h3>Waiting for you</h3><p>You told me about how you liked Alex g, and i think the instrumental on this song is really pretty.</p></div></article>
+<article class="song-card"><div class="song-num">46</div><div><h3>I Live for You</h3><p>I love this song and Marvin Gaye, and i truly do live for you baby</p></div></article>
+<article class="song-card"><div class="song-num">47</div><div><h3>It had to be you</h3><p>It reminds me of you because i genuinely could not have seen my life going any different. It really did have to be you that i loved.</p></div></article>
+<article class="song-card"><div class="song-num">48</div><div><h3>All This and Heaven Too</h3><p>This song is so beautiful and idk how to explain it but it really does just remind me of you.</p></div></article>
+<article class="song-card"><div class="song-num">49</div><div><h3>California and Me</h3><p>Me and you. You are California. Also i just really like this song this is beautiful.</p></div></article>
+<article class="song-card"><div class="song-num">50</div><div><h3>Let my baby stay</h3><p>I want to be with you forever and this song reminds me of that.</p></div></article>
+<article class="song-card"><div class="song-num">51</div><div><h3>Give You the World</h3><p>Please i genuinely wanna give you everything you’ve ever wanted i would buy you a planet if i could.</p></div></article>
+<article class="song-card"><div class="song-num">52</div><div><h3>nothing</h3><p>I like this song and when it says ‘Nothing could keep you off my mind’ is where i think of you most because genuinely i can never stop thinking about you not in class not at home literally never.</p></div></article>
+<article class="song-card"><div class="song-num">53</div><div><h3>spell #6</h3><p>I remember when you showed me this song and i absolutely lovedd it dude its still on my playlist</p></div></article></div>
+  </section>
+
+  <footer>
+    <div class="footer-heart">♡</div>
+    <h2>Happy birthday, pretty girl.</h2>
+    <p>I love you sosoooo much ♡</p>
+  </footer>
+</section>
+</main>
+
+<script>
+const songUrl = "https://open.spotify.com/track/026wpXkLAjImiWOzzcJBHj";
+const envelope = document.getElementById("openEnvelope");
+const opening = document.getElementById("opening");
+const content = document.getElementById("content");
+const musicBtn = document.getElementById("musicBtn");
+
+function openSite() {
+  opening.classList.add("opened");
+  setTimeout(() => {
+    opening.style.display = "none";
+    content.classList.remove("hidden");
+    document.body.classList.add("site-open");
+    window.scrollTo({top:0, behavior:"smooth"});
+  }, 900);
+}
+
+envelope.addEventListener("click", openSite);
+envelope.addEventListener("keydown", e => { if(e.key==="Enter" || e.key===" ") openSite(); });
+musicBtn.addEventListener("click", () => window.open(songUrl, "_blank"));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add("visible");
+  });
+}, {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+for(let i=0;i<16;i++) {
+  const h=document.createElement("span");
+  h.className="floating-heart";
+  h.textContent=Math.random()>.35 ? "♡" : "·";
+  h.style.left=(Math.random()*100)+"vw";
+  h.style.animationDelay=(Math.random()*8)+"s";
+  h.style.animationDuration=(7+Math.random()*7)+"s";
+  document.getElementById("hearts").appendChild(h);
+}
+</script>
+
+<script>
+document.querySelectorAll(".memory-card").forEach((card, index) => {
+  const n = index + 1;
+  const box = card.querySelector(".photo-placeholder");
+  const img = new Image();
+  img.alt = "Memory " + n;
+  img.onload = () => {
+    box.innerHTML = "";
+    box.appendChild(img);
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.objectFit = "cover";
+    img.style.borderRadius = "11px";
+  };
+  img.src = "memory" + n + ".jpg";
+});
+</script>
+
+</body>
+</html>
